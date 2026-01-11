@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>レジごっこアプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="scanPage">
+  <video id="video" autoplay playsinline></video>
+  <canvas id="canvas" hidden></canvas>
+
+  <div id="itemDisplay"></div>
+  <div id="message"></div>
+  <div id="total">ごうけい: ¥0</div>
+
+  <div id="controls">
+    <button id="checkoutBtn">しはらい</button>
+    <button id="resetBtn">リセット</button>
+  </div>
+</div>
+
+<div id="paymentPage">
+  <h2>ごうけい</h2>
+  <p id="paymentTotal"></p>
+  <button id="backBtn">もどる</button>
+</div>
+
+<audio id="beep-sound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg" preload="auto"></audio>
+
+<script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
