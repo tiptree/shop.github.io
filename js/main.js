@@ -11,19 +11,23 @@ const paymentTotal = document.getElementById('paymentTotal');
 
 const beep = document.getElementById('beep-sound');
 
-// iPhone用：最初のタップで音を有効化
 let audioEnabled = false;
 
-document.body.addEventListener('click', () => {
-  if (!audioEnabled) {
-    beep.play().then(() => {
-      beep.pause();
-      beep.currentTime = 0;
-      audioEnabled = true;
-    }).catch(() => {});
-  }
-}, { once: true });
+document.getElementById('startBtn').addEventListener('click', () => {
+  // 音の許可を取る
+  beep.play().then(() => {
+    beep.pause();
+    beep.currentTime = 0;
+    audioEnabled = true;
+  }).catch(() => {});
 
+  // 画面切り替え
+  document.getElementById('startPage').style.display = 'none';
+  document.getElementById('scanPage').style.display = 'flex';
+
+  // カメラ開始
+  startCamera();
+});
 
 
 let total = 0;
@@ -39,7 +43,6 @@ fetch('items.json')
   .then(res => res.json())
   .then(data => {
     itemsData = data;
-    startCamera();
   })
   .catch(err => alert('商品データを読み込めません:' + err));
 
